@@ -15,6 +15,7 @@ function addBook() {
 }
 
 function postNewBook(book) {
+  const message = document.querySelector("#message");
   fetch("http://localhost:3000/books/addbook", {
     method: "POST",
     headers: {
@@ -24,6 +25,7 @@ function postNewBook(book) {
   })
     .then((resp) => resp.json())
     .then((book) => {
+      message.innerHTML = `${book[book.length - 1].title} added successfully!`;
       fetchBooks();
     });
 }
