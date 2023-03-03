@@ -10,7 +10,7 @@ function addBorrowBtn() {
 }
 
 function findBookById(id) {
-  fetch(`http://localhost:3000/books/${id}`)
+  fetch(`http://localhost:3000/books/bookid/${id}`)
     .then((resp) => resp.json())
     .then((book) => {
       borrowBook(book.id, book);
@@ -21,7 +21,6 @@ function borrowBook(id, book) {
   const borrowedBook = {
     title: book.title,
     author: book.author,
-    // isAvailable: false,
   };
   fetch(`http://localhost:3000/books/borrowbook/${id}`, {
     method: "POST",
